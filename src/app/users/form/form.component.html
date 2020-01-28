@@ -1,0 +1,31 @@
+<p>form inputs</p>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-body">
+  <mat-form-field>
+    <input matInput formControlName="first_name" placeholder="first name" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="last_name" placeholder="last name" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="email" placeholder="email" required />
+    <mat-error
+      *ngIf="
+        profileForm.controls['email'].invalid &&
+        (profileForm.controls['email'].dirty ||
+          profileForm.controls['email'].touched)
+      "
+      class="alert alert-danger"
+    >
+      {{ getErrorMessage() }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="ip_address" placeholder="ip address" />
+  </mat-form-field>
+  <div>
+    <button mat-raised-button mat-button color="primary">submit</button>
+    <a mat-raised-button mat-button color="accent" routerLink=""
+      >Back to table</a
+    >
+  </div>
+</form>
